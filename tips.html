@@ -7,20 +7,6 @@
 
 <body>
     <h1>Anusha Gurijala shows tip amounts</h1>
-    <h2>Getting input</h2>
-
-    <form>
-        <label for="form1_age">What is your age </label>
-        <input type="number" id="form1_age" name="form1_age" min=10 max=50 step=2 value=30> <br>
-
-        <label for="form1_nick">What is your nickname </label>
-        <input type="text" id="form1_nick" name="form1_nick" autofocus> <br>
-
-        <input type="button" onclick="resolveForm()" value="Get values from form">
-    </form>
-
-
-    <p id="result">This text will be replaced </p>
 
     <form id="tipForm">
 
@@ -37,44 +23,17 @@
     <p id="tipResults"></p>
 
     <script>
-
-        function resolveForm() {
-            console.log("Getting form values")
-            age = document.getElementById("form1_age").value
-            nick = document.getElementById("form1_nick").value
-            confirmed = confirm("Are these the values? " + age + " and " + nick)
-
-            out = document.getElementById("result")
-            if (confirmed) {
-                out.innerHTML = "Values were confirmed"
-            } else {
-                out.innerHTML = "Values were not confirmed"
-            }
-        }
         function tips() {
-
             var form = document.getElementById("tipForm");
-
-
             var baseAmount = parseFloat(form.elements["baseAmount"].value);
-
-
             var tipPercent = parseFloat(form.elements["tipPercent"].value);
-
-
             var myOutput = "";
-
-
             for (var i = 0; i < 5; i++) {
                 var calculatedTip = (baseAmount * (tipPercent / 100));
                 calculatedTip = calculatedTip % 1 === 0 ? calculatedTip.toFixed(0) : calculatedTip.toFixed(1);
                 myOutput += tipPercent + "% is " + calculatedTip + "; ";
-
-
                 tipPercent += 4;
             }
-
-
             document.getElementById("tipResults").textContent = "Tip are: " + myOutput;
         }
 
