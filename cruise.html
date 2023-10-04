@@ -20,19 +20,20 @@
     <!-- Button to select a cruise -->
     <input type="button" value="Select a cruise" onclick="selectCruise()"><br>
 </form>
-
 <p id="cruiseResult"></p>
+<form id="updateCruiseForm">
+    <!-- Input element for the number of days -->
+    <label for="days">Enter the number of days: </label>
+    <input type="text" id="days" value="days"><br><br>
 
-<form>
-    <label for="form1_age">What is your age </label>
-    <input type ="number" id="form1_age" name="form1_age" min=10 max=50 step=2 value=30> <br>
+    <!-- Input element for the price -->
+    <label for="price">Enter price: </label>
+    <input type="text" id="price" value=""><br><br>
 
-    <label for="form1_nick">What is your nickname </label>
-    <input type ="text" id="form1_nick" name="form1_nick" autofocus> <br>
-
-    <input type="button" onclick="resolveForm()" value="Get values from form">
+    <!-- Button to update the cruise -->
+    <input type="button" value="Update the cruise" onclick="updateCruise()"><br>
 </form>
-<p id="result">This text will be replaced </p><br>
+<div id="cruiseInfo"></div>
 <script> 
 var my_cruise = {};
 function selectCruise() {
@@ -47,19 +48,20 @@ function selectCruise() {
             // Display the selected cruise options in the designated paragraph element
             document.getElementById("cruiseResult").textContent = JSON.stringify(my_cruise);
         }
-function resolveForm (){
-    console.log("Getting form values")
-    age = document.getElementById("form1_age").value
-    nick = document.getElementById("form1_nick").value
-    confirmed = confirm("Are these the values? "+age+" and "+nick)
-    
-    out = document.getElementById("result")
-    if(confirmed){
-        out.innerHTML = "Values were confirmed"
-    } else {
-        out.innerHTML = "Values were not confirmed"
-    }
-}
+        function updateCruise() {
+            // Get the value from the "days" input element
+            var daysValue = document.getElementById("days").value;
+
+            // Get the value from the "price" input element
+            var priceValue = document.getElementById("price").value;
+
+            // Set the properties of my_cruise with the values from the input elements
+            my_cruise.days = daysValue;
+            my_cruise.price = priceValue;
+
+            // Display the updated cruise object in the designated paragraph element
+            document.getElementById("cruiseInfo").textContent = JSON.stringify(my_cruise);
+        }
        
 </script>
 
