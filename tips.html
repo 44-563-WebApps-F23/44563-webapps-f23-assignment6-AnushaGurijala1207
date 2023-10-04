@@ -23,7 +23,18 @@
 
     
     <p id="tipResults"></p>
-    
+    <form>
+        <label>
+            <input type="radio" name="operation" value="sum" onClick="chooseOp()"> sum
+        </label><br>
+        <label>
+            <input type="radio" name="operation" value="difference" onClick="chooseOp()"> diff
+        </label><br>
+        <label>
+            <input type="radio" name="operation" value="product" onClick="chooseOp()"> mult
+        </label><br>
+    </form>
+    <p id="calculationResult"></p>
     <script>
         function tips() {
             var form = document.getElementById("tipForm");
@@ -38,8 +49,38 @@
             }
             document.getElementById("tipResults").textContent = "Tip are: " + myOutput;
         }
-        
-    </script>
+        function chooseOp() {
+            var baseValue = parseFloat(document.getElementById("baseAmount").value);
+            var tipValue = parseFloat(document.getElementById("tipPercent").value);
+            var operation = document.querySelector('input[name="operation"]:checked').value;
+            var result;
+            var operationSymbol;
+
+            switch (operation) {
+                case "sum":
+                    result = baseValue + tipValue;
+                    operationSymbol = "+";
+                    break;
+                case "difference":
+                    result = baseValue - tipValue;
+                    operationSymbol = "-";
+                    break;
+                case "product":
+                    result = baseValue * tipValue;
+                    operationSymbol = "×";
+                    break;
+                default:
+                    result = "Invalid operation";
+                    operationSymbol = "";
+                    break;
+            }
+
+            var outputMessage = ` ${operation} of ${baseValue} and ${tipValue} is  ${result}`;
+            document.getElementById("calculationResult").textContent = "Result: " + result;
+            document.getElementById("calculationResult").textContent = outputMessage;
+        }
+    </script> 
+    
 
 </body>
 
