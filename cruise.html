@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+ <head>
+    <title>cruise page</title>
+ </head>
+<body>
+<h1>Anusha Gurijala goes on a cruise</h1>
+<h2>Getting input</h2>
+<form id="cruiseForm">
+    <label>
+        <input type="checkbox" id="shared" value="True"> Shares Cabin
+    </label><br>
+    <label>
+        <input type="checkbox" id="breakfast" value="True"> Breakfast
+    </label><br>
+    <label>
+        <input type="checkbox" id="pool" value="False"> Pool Pass
+    </label><br>
+
+    <!-- Button to select a cruise -->
+    <input type="button" value="Select a cruise" onclick="selectCruise()"><br>
+</form>
+
+<p id="cruiseResult"></p>
+
+<form>
+    <label for="form1_age">What is your age </label>
+    <input type ="number" id="form1_age" name="form1_age" min=10 max=50 step=2 value=30> <br>
+
+    <label for="form1_nick">What is your nickname </label>
+    <input type ="text" id="form1_nick" name="form1_nick" autofocus> <br>
+
+    <input type="button" onclick="resolveForm()" value="Get values from form">
+</form>
+<p id="result">This text will be replaced </p><br>
+<script> 
+var my_cruise = {};
+function selectCruise() {
+            // Reset my_cruise to an empty object
+            my_cruise = {};
+
+            // Get the checkbox values
+            my_cruise.shared = document.getElementById("shared").checked;
+            my_cruise.breakfast = document.getElementById("breakfast").checked;
+            my_cruise.pool = document.getElementById("pool").checked;
+
+            // Display the selected cruise options in the designated paragraph element
+            document.getElementById("cruiseResult").textContent = JSON.stringify(my_cruise);
+        }
+function resolveForm (){
+    console.log("Getting form values")
+    age = document.getElementById("form1_age").value
+    nick = document.getElementById("form1_nick").value
+    confirmed = confirm("Are these the values? "+age+" and "+nick)
+    
+    out = document.getElementById("result")
+    if(confirmed){
+        out.innerHTML = "Values were confirmed"
+    } else {
+        out.innerHTML = "Values were not confirmed"
+    }
+}
+       
+</script>
+
+</body>
+</html> 
