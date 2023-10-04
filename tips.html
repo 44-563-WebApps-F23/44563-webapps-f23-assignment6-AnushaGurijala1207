@@ -13,15 +13,17 @@
         <label for="baseAmount">Enter base amount: </label>
         <input type="number" id="baseAmount" value="50"><br><br>
 
-
+        <!-- Input element for the tip percentage -->
         <label for="tipPercent">Enter the tip percent: </label>
         <input type="number" id="tipPercent" value="15"><br><br>
 
+        <!-- Button to calculate and show tips -->
         <input type="button" value="Show tip" onclick="tips()"><br><br>
     </form>
 
+    
     <p id="tipResults"></p>
-
+    
     <script>
         function tips() {
             var form = document.getElementById("tipForm");
@@ -36,7 +38,7 @@
             }
             document.getElementById("tipResults").textContent = "Tip are: " + myOutput;
         }
-
+        
     </script>
 
 </body>
