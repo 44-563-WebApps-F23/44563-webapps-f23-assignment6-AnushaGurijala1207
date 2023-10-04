@@ -16,50 +16,31 @@
     <label>
         <input type="checkbox" id="pool" value="False"> Pool Pass
     </label><br>
-
-    <!-- Button to select a cruise -->
     <input type="button" value="Select a cruise" onclick="selectCruise()"><br>
 </form>
 <p id="cruiseResult"></p>
 <form id="updateCruiseForm">
-    <!-- Input element for the number of days -->
     <label for="days">Enter the number of days: </label>
     <input type="text" id="days" value="days"><br><br>
-
-    <!-- Input element for the price -->
     <label for="price">Enter price: </label>
     <input type="text" id="price" value=""><br><br>
-
-    <!-- Button to update the cruise -->
     <input type="button" value="Update the cruise" onclick="updateCruise()"><br>
 </form>
 <div id="cruiseInfo"></div>
 <script> 
 var my_cruise = {};
 function selectCruise() {
-            // Reset my_cruise to an empty object
             my_cruise = {};
-
-            // Get the checkbox values
             my_cruise.shared = document.getElementById("shared").checked;
             my_cruise.breakfast = document.getElementById("breakfast").checked;
             my_cruise.pool = document.getElementById("pool").checked;
-
-            // Display the selected cruise options in the designated paragraph element
             document.getElementById("cruiseResult").textContent = JSON.stringify(my_cruise);
         }
         function updateCruise() {
-            // Get the value from the "days" input element
             var daysValue = document.getElementById("days").value;
-
-            // Get the value from the "price" input element
             var priceValue = document.getElementById("price").value;
-
-            // Set the properties of my_cruise with the values from the input elements
             my_cruise.days = daysValue;
             my_cruise.price = priceValue;
-
-            // Display the updated cruise object in the designated paragraph element
             document.getElementById("cruiseInfo").textContent = JSON.stringify(my_cruise);
         }
        
